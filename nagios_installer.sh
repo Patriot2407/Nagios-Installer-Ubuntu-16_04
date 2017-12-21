@@ -39,6 +39,7 @@ sudo systemctl restart apache2.service
 # Start Service / Daemon
 sudo systemctl start nagios.service
 # Test Nagios
+clear
 echo "
 Nagios is now running, to confirm this you need to log into the Nagios Web Interface.
 
@@ -50,6 +51,8 @@ You will be prompted for a username and password. The username is nagiosadmin (y
 
 Once you have logged in you are presented with the Nagios interface. Congratulations you have installed Nagios Core.
 "
+echo -n "press enter to continue..." 
+read
 # ------------------ Installing The Nagios Plugins ------------------
 # Prerequisites
 sudo apt-get install -y autoconf gcc libc6 libmcrypt-dev make libssl-dev wget bc gawk dc build-essential snmp libnet-snmp-perl gettext -y
@@ -64,6 +67,7 @@ sudo ./configure
 sudo make
 sudo make install
 # Test Plugins
+clear
 echo "
 Point your web browser to the ip address or FQDN of your Nagios Core server, for example:
 
@@ -75,7 +79,7 @@ Go to a host or service object and "Re-schedule the next check" under the Comman
 sudo systemctl start nagios.service
 sudo systemctl stop nagios.service
 sudo systemctl restart nagios.service
-sudo systemctl status nagios.service
+# sudo systemctl status nagios.service
 echo ""
 echo "This concludes the Nagios Core installation  script. Enjoy!"
 exit 0
